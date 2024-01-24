@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,10 @@ Route::get('/', function () {
 Route::get('/admin', function() {
     return Inertia::Render('Admin', []);
 })->middleware(['auth', 'role:admin'])->name('admin');
+
+Route::middleware(['auth', 'role:admin'])->group(function() {
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+});
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
