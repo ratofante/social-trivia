@@ -1,6 +1,9 @@
 <script setup>
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import NavLink from "@/Components/NavLink.vue";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Head } from "@inertiajs/vue3";
+
+const props = defineProps(["message", "isAdmin"]);
 </script>
 
 <template>
@@ -8,13 +11,28 @@ import { Head } from '@inertiajs/vue3';
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Dashboard</h2>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                Dashboard - {{ message }}
+            </h2>
         </template>
 
-        <div class="py-12">
+        <div class="py-12 bg-blue-950">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="p-6 text-gray-900">You're logged in!</div>
+                <div class="flex gap-4 bg-gray-200 p-6">
+                    <NavLink
+                        v-if="isAdmin"
+                        :href="route('admin.users')"
+                        :active="true"
+                    >
+                        Users List
+                    </NavLink>
+                    <NavLink
+                        v-if="isAdmin"
+                        :href="route('admin.users')"
+                        :active="false"
+                    >
+                        Questions
+                    </NavLink>
                 </div>
             </div>
         </div>
