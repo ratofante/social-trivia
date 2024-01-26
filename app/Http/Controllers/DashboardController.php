@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -10,11 +11,36 @@ use Inertia\Response;
 
 class DashboardController extends Controller
 {
+    protected $userData;
+
+    public function __construct()
+    {
+        $this->userData = [
+            'user' => $this->getUserData(),
+        ];
+    }
+
     public function index(): Response
     {
-        return Inertia::render('Dashboard', [
-            'message' => 'Welcome to the dashboard',
-            'isAdmin' => Auth::user()->hasRole('admin')
-        ]);
+        return Inertia::render('Dashboard/General', $this->userData);
+    }
+
+    public function users(): Response
+    {
+        $this->userData['users'] = User::all();
+        return Inertia::render('Dashboard/Users', $this->userData);
+    }
+
+    public function questions(): Response
+    {
+        // Fetch questions data
+        return Inertia::render('Dashboard/Questions', $this->userData);
+    }
+
+    protected function getUserData()
+    {   
+        return [
+            'isAdmin' => Auth::user()->hasRole('admin'),
+        ];
     }
 }

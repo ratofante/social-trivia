@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,13 +26,16 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
-Route::middleware(['auth', 'role:admin'])->group(function() {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-    Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+Route::middleware(['auth', 'verified'])->group(function () {
+    /* ************************
+    *   Dashboard Routes
+    *  ***********************/
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::middleware('role:admin')->group(function () {
+        Route::get('/dashboard/users', [DashboardController::class, 'users'])->name('dashboard.users');
+    });
+    Route::get('/dashboard/questions', [DashboardController::class, 'questions'])->name('dashboard.questions');
 });
 
 Route::middleware('auth')->group(function () {
