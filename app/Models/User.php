@@ -45,8 +45,14 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+
+    /**
+     * Function : Relation for questions
+     * @relationType: hasMany
+     * @return questions
+     */
     public function questions(): HasMany
     {
-        return $this->hasMany(Question::class);
+        return $this->hasMany(Question::class, 'user_id', 'id');
     }
 }

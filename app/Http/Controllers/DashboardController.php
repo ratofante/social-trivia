@@ -29,10 +29,12 @@ class DashboardController extends Controller
 
     public function questions(): Response
     {
-        // Fetch questions data
+        $user = Auth::user();
+        $userQuestions = $user->questions;
+
         return Inertia::render('Dashboard/Questions', [
             "user" => ["isAdmin" => Auth::user()->hasRole('admin')],
-            "questions" => Question::all()
+            "questions" => $userQuestions
         ]);
     }
 }

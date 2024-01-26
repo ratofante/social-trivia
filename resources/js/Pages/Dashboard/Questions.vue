@@ -3,6 +3,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
 
 const props = defineProps(["user", "questions"]);
+console.log(props.questions);
 
 function dateFormat(str) {
     let options = {
@@ -28,6 +29,7 @@ function dateFormat(str) {
             </h2>
         </template>
 
+        <!-- Results Table -->
         <div class="py-12">
             <table>
                 <thead>

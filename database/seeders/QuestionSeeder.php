@@ -96,5 +96,54 @@ class QuestionSeeder extends Seeder
                 'user_id' => 1,
             ]);
         }
+
+        $user_test_questions = [
+            [
+                'question' => 'Who won the FIFA World Cup in 2018?',
+                'answer' => 'France',
+                'opt_1' => 'Germany',
+                'opt_2' => 'Argentina',
+                'opt_3' => 'Brazil',
+            ],
+            [
+                'question' => 'Who is the all-time top scorer in NBA history?',
+                'answer' => 'Kareem Abdul-Jabbar',
+                'opt_1' => 'LeBron James',
+                'opt_2' => 'Michael Jordan',
+                'opt_3' => 'Kobe Bryant',
+            ],
+            [
+                'question' => 'Which city hosted the 2016 Summer Olympics?',
+                'answer' => 'Rio de Janeiro',
+                'opt_1' => 'Tokyo',
+                'opt_2' => 'Beijing',
+                'opt_3' => 'London',
+            ],
+            [
+                'question' => 'Who is known as the "King of Pop"?',
+                'answer' => 'Michael Jackson',
+                'opt_1' => 'Elvis Presley',
+                'opt_2' => 'Prince',
+                'opt_3' => 'David Bowie',
+            ],
+            [
+                'question' => 'Which band performed the halftime show at Super Bowl LIV?',
+                'answer' => 'Shakira and Jennifer Lopez',
+                'opt_1' => 'Coldplay',
+                'opt_2' => 'Maroon 5',
+                'opt_3' => 'Bruno Mars',
+            ],
+        ];
+
+        foreach($user_test_questions as $q) {
+            Question::create([
+                'question' => $q['question'],
+                'answer' => $q['answer'],
+                'opt_1' => $q['opt_1'],
+                'opt_2' => $q['opt_2'],
+                'opt_3' => $q['opt_3'],
+                'user_id' => 2,
+            ]);
+        };
     }
 }
