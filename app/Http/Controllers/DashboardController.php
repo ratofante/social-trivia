@@ -13,34 +13,40 @@ class DashboardController extends Controller
 {
     protected $userData;
 
-    public function __construct()
-    {
-        $this->userData = [
-            'user' => $this->getUserData(),
-        ];
-    }
+    // public function __construct()
+    // {
+    //     $this->userData = [
+    //         'user' => $this->getUserData(),
+    //     ];
+    // }
 
     public function index(): Response
     {
-        return Inertia::render('Dashboard/General', $this->userData);
+        return Inertia::render('Dashboard/General', [
+            "user" => ["isAdmin" => Auth::user()->hasRole('admin')]
+        ]);
     }
 
     public function users(): Response
     {
-        $this->userData['users'] = User::all();
-        return Inertia::render('Dashboard/Users', $this->userData);
+        return Inertia::render('Dashboard/Users', [
+            "user" => ["isAdmin" => Auth::user()->hasRole('admin')],
+            "users" => User::all()
+        ]);
     }
 
     public function questions(): Response
     {
         // Fetch questions data
-        return Inertia::render('Dashboard/Questions', $this->userData);
+        return Inertia::render('Dashboard/Questions', [
+            "user" => ["isAdmin" => Auth::user()->hasRole('admin')]
+        ]);
     }
 
-    protected function getUserData()
-    {   
-        return [
-            'isAdmin' => Auth::user()->hasRole('admin'),
-        ];
-    }
+    // protected function getUserData()
+    // {   
+    //     return [
+    //         'isAdmin' => Auth::user()->hasRole('admin'),
+    //     ];
+    // }
 }
