@@ -20,11 +20,13 @@ function onMouseLeave() {
 }
 const classes = computed(() =>
     props.active
-        ? "flex relative items-center justify-center px-1 pt-1 text-sm font-medium leading-5 text-gray-950 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
+        ? "flex relative items-center justify-center px-1 pt-1 text-sm font-medium leading-5 text-blue-950 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out"
         : "flex relative items-center justify-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
 );
 const borderClasses = computed(() => {
-    return isHover.value ? "scale-x-100 origin-left" : "scale-x-0 origin-right";
+    return isHover.value || props.active
+        ? "scale-x-100 origin-left"
+        : "scale-x-0 origin-right";
 });
 </script>
 
