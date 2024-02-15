@@ -31,6 +31,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         $userQuestions = $user->questions;
+        dd(Auth::user()->hasRole('admin'));
 
         return Inertia::render('Dashboard/Questions', [
             "user" => ["isAdmin" => Auth::user()->hasRole('admin')],

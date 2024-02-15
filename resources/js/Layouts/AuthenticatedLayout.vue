@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import ApplicationLogo from "@/Components/ApplicationLogo.vue";
+import Navbar from "@/Components/Navbar.vue";
 import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
@@ -13,9 +14,10 @@ const props = defineProps(["user"]);
 </script>
 
 <template>
-    <div>
+    <div class="min-h-screen bg-gray-100">
+        <Navbar />
         <div class="min-h-screen bg-gray-100">
-            <nav class="bg-white border-b border-gray-100">
+            <nav class="hidden bg-white border-b border-gray-100">
                 <!-- Primary Navigation Menu -->
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between h-16">
@@ -33,7 +35,7 @@ const props = defineProps(["user"]);
                             <div
                                 class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex"
                             >
-                                Dashboard
+                                Dashboarddd
                                 <!-- <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </NavLink> -->
@@ -142,7 +144,7 @@ const props = defineProps(["user"]);
                             :href="route('dashboard')"
                             :active="route().current('dashboard')"
                         >
-                            Dashboard
+                            Dashboardsss
                         </ResponsiveNavLink>
                     </div>
 

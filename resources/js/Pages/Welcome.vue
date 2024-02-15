@@ -1,4 +1,6 @@
 <script setup>
+import GuestLayout from "@/Layouts/GuestLayout.vue";
+import HomeHero from "@/Components/Section/HomeHero.vue";
 import { Head, Link } from "@inertiajs/vue3";
 
 defineProps({
@@ -22,7 +24,11 @@ defineProps({
 <template>
     <Head title="Welcome" />
 
-    <div
+    <GuestLayout :canLogin="canLogin" :canRegister="canRegister">
+        <HomeHero />
+    </GuestLayout>
+
+    <!-- <div
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white"
     >
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
@@ -48,7 +54,7 @@ defineProps({
                 >
             </template>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <style></style>
