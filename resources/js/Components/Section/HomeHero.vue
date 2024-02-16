@@ -33,7 +33,7 @@
                 <li class="pb-1">2mill trivias jugadas</li>
             </ul>
             <div>
-                <button class="font-serif text-2xl py-2 px-4 rounded bg-green">
+                <button class="font-serif text-xl py-2 px-4 rounded bg-green">
                     Juego Rápido
                 </button>
                 <div></div>

@@ -22,14 +22,14 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Register" />
+        <Head title="Registrarse" />
 
         <div
-            class="dark-gray px-4 py-12 min-h-screen flex flex-col justify-center"
+            class="bg-gray-dark px-4 py-12 min-h-screen flex flex-col justify-center"
         >
             <form @submit.prevent="submit">
                 <div>
-                    <InputLabel for="name" value="Name" />
+                    <InputLabel for="name" value="Nombre" />
 
                     <TextInput
                         id="name"
@@ -60,7 +60,7 @@ const submit = () => {
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="password" value="Password" />
+                    <InputLabel for="password" value="Contraseña" />
 
                     <TextInput
                         id="password"
@@ -77,7 +77,7 @@ const submit = () => {
                 <div class="mt-4">
                     <InputLabel
                         for="password_confirmation"
-                        value="Confirm Password"
+                        value="Confirmar Contraseña"
                     />
 
                     <TextInput
@@ -98,7 +98,7 @@ const submit = () => {
                 <div class="flex items-center justify-end mt-4">
                     <Link
                         :href="route('login')"
-                        class="underline text-sm text-gray-300 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        class="underline text-sm text-white opacity-75 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         ¿Ya estás registrado?
                     </Link>
@@ -108,7 +108,7 @@ const submit = () => {
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
-                        Register
+                        Registrarse
                     </PrimaryButton>
                 </div>
             </form>
