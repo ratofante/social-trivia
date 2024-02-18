@@ -14,8 +14,8 @@ class DashboardController extends Controller
 {
     public function index(): Response
     {
-        return Inertia::render('Dashboard/General', [
-            "user" => ["isAdmin" => Auth::user()->hasRole('admin')]
+        return Inertia::render('Dashboard', [
+            "isAdmin" => Auth::user()->hasRole('admin')
         ]);
     }
 

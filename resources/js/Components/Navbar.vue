@@ -109,9 +109,12 @@ console.log(props.canLogin);
                     />
                 </div>
             </div>
-            <div class="pt-6 flex flex-col gap-2 px-4">
+            <div class="pt-6 flex flex-col gap-2 px-4 text-end">
                 <ResponsiveNavLink :href="route('profile.edit')">
                     Perfil
+                </ResponsiveNavLink>
+                <ResponsiveNavLink :href="route('dashboard')">
+                    Trivias
                 </ResponsiveNavLink>
                 <ResponsiveNavLink
                     :href="route('logout')"

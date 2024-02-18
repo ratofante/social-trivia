@@ -18,7 +18,7 @@ const props = defineProps(["user", "canLogin", "canRegister"]);
         <Navbar :canLogin="canLogin" :canRegister="canRegister" />
         <div class="min-h-screen bg-gray-dark">
             <!-- Page Content -->
-            <main>
+            <main class="pt-12">
                 <slot />
             </main>
         </div>

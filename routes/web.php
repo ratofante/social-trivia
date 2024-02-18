@@ -26,24 +26,21 @@ Route::get('/', function () {
     ]);
 });
 
+//Route::get('/questions', [QuestionController::class, 'index']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    /* ************************
-    *   Dashboard Routes
-    *  ***********************/
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::middleware('role:admin')->group(function () {
-        Route::get('/dashboard/users', [DashboardController::class, 'users'])->name('dashboard.users');
-    });
-    Route::get('/dashboard/questions', [DashboardController::class, 'questions'])->name('dashboard.questions');
 });
+
+ Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
+    Route::resource('questions', QuestionController::class);
+ });
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-Route::resource('questions', QuestionController::class);
 
 require __DIR__.'/auth.php';
