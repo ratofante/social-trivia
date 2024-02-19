@@ -14,8 +14,6 @@ const props = defineProps({
         default: false,
     },
 });
-
-console.log(props.canLogin);
 </script>
 
 <template>

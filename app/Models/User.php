@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -54,5 +55,20 @@ class User extends Authenticatable
     public function questions(): HasMany
     {
         return $this->hasMany(Question::class, 'user_id', 'id');
+    }
+    /**
+     * Returns if the User has the specified permission
+     * @return Boolean
+     */
+    public function getPermissions()
+    {
+        return Cache::remember('user_permissions_' . $this->id, now()->addHour(), function () {
+            $permissions = [];
+            $userPermissions = $this->getPermissionsViaRoles();
+            foreach ($userPermissions as $permission) {
+                array_push($permissions, $permission->name);
+            }
+            return $permissions;
+        });
     }
 }

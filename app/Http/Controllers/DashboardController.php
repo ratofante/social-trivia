@@ -12,30 +12,12 @@ use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function index(): Response
-    {
-        return Inertia::render('Dashboard', [
-            "isAdmin" => Auth::user()->hasRole('admin')
-        ]);
-    }
-
-    public function users(): Response
-    {
-        return Inertia::render('Dashboard/Users', [
-            "user" => ["isAdmin" => Auth::user()->hasRole('admin')],
-            "users" => User::all()
-        ]);
-    }
-
-    public function questions(): Response
+    public function index(Request $request): Response
     {
         $user = Auth::user();
-        $userQuestions = $user->questions;
-        dd(Auth::user()->hasRole('admin'));
-
-        return Inertia::render('Dashboard/Questions', [
-            "user" => ["isAdmin" => Auth::user()->hasRole('admin')],
-            "questions" => $userQuestions
+        return Inertia::render('Dashboard', [
+            "isAdmin" => $user->hasRole('admin'),
+            "permissions" => $user->getPermissions(),
         ]);
     }
 }

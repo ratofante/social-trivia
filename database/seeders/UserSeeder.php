@@ -25,9 +25,23 @@ class UserSeeder extends Seeder
 
         User::create([
             'name' => 'cumbia',
-            'email' => 'gwilkens.r@gmail.com',
+            'email' => 'cumbia@gmail.com',
             'email_verified_at' => now(),
-            'password' => 'Cumbia12',
-        ])->assignRole('player');
+            'password' => 'cumbia1234',
+        ])->assignRole('novice');
+
+        User::create([
+            'name' => 'sumo',
+            'email' => 'sumo@gmail.com',
+            'email_verified_at' => now(),
+            'password' => 'sumo1234',
+        ])->assignRole('apprentice');
+
+        User::create([
+            'name' => 'sumerio',
+            'email' => 'sumerio@gmail.com',
+            'email_verified_at' => now(),
+            'password' => 'sumerio1234'
+        ])->assignRole('adept');
     }
 }

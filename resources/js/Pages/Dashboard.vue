@@ -10,6 +10,9 @@ defineProps({
         type: Boolean,
         required: true,
     },
+    permissions: {
+        type: Array,
+    },
 });
 </script>
 <template>
@@ -18,16 +21,15 @@ defineProps({
 
         <div class="p-4 pt-12">
             <div class="font-serif text-white text-2xl mb-4">
-                Bienvenido/a, <br />
+                Bienvenido/a,<br />
                 <span class="capitalize">{{ page.props.auth.user.name }}</span
                 >!
+                <br />
             </div>
-
             <template v-if="isAdmin">
                 <AdminDashboardMenu />
             </template>
-
-            <div class="flex flex-col gap-4 py-4">
+            <div class="flex flex-col gap-4 py-4 md:flex-wrap">
                 <CardDashboard
                     title="trivia simple"
                     description="Contesta 10 preguntas al azar y marca tu record personal."
@@ -37,10 +39,9 @@ defineProps({
                 <CardDashboard
                     title="Trivia Social"
                     description="Contesta
-                preguntas de otros jugadores. Vota por las mejores preguntas,
-                marca tu record personal y aporta nuevas preguntas."
+                    preguntas de otros jugadores. Vota por las mejores preguntas, marca tu record personal y aporta nuevas preguntas."
                     :link="{ href: '/trivia/social', title: 'social trivia' }"
-                    :avalaible="false"
+                    :avalaible="permissions.includes('trivia social')"
                 />
             </div>
         </div>
