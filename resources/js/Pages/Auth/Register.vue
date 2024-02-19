@@ -1,9 +1,9 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import InputError from "@/Components/Form/InputError.vue";
-import InputLabel from "@/Components/Form/InputLabel.vue";
-import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
-import TextInput from "@/Components/Form/TextInput.vue";
+import FormInputError from "@/Components/Form/FormInputError.vue";
+import FormInputLabel from "@/Components/Form/FormInputLabel.vue";
+import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
+import FormTextInput from "@/Components/Form/FormTextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 
 const form = useForm({
@@ -29,9 +29,9 @@ const submit = () => {
         >
             <form @submit.prevent="submit">
                 <div>
-                    <InputLabel for="name" value="Nombre" />
+                    <FormInputLabel for="name" value="Nombre" />
 
-                    <TextInput
+                    <FormTextInput
                         id="name"
                         type="text"
                         class="mt-1 block w-full"
@@ -41,13 +41,13 @@ const submit = () => {
                         autocomplete="name"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.name" />
+                    <FormInputError class="mt-2" :message="form.errors.name" />
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="email" value="Email" />
+                    <FormInputLabel for="email" value="Email" />
 
-                    <TextInput
+                    <FormTextInput
                         id="email"
                         type="email"
                         class="mt-1 block w-full"
@@ -56,13 +56,13 @@ const submit = () => {
                         autocomplete="username"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.email" />
+                    <FormInputError class="mt-2" :message="form.errors.email" />
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel for="password" value="Contraseña" />
+                    <FormInputLabel for="password" value="Contraseña" />
 
-                    <TextInput
+                    <FormTextInput
                         id="password"
                         type="password"
                         class="mt-1 block w-full"
@@ -71,16 +71,19 @@ const submit = () => {
                         autocomplete="new-password"
                     />
 
-                    <InputError class="mt-2" :message="form.errors.password" />
+                    <FormInputError
+                        class="mt-2"
+                        :message="form.errors.password"
+                    />
                 </div>
 
                 <div class="mt-4">
-                    <InputLabel
+                    <FormInputLabel
                         for="password_confirmation"
                         value="Confirmar Contraseña"
                     />
 
-                    <TextInput
+                    <FormTextInput
                         id="password_confirmation"
                         type="password"
                         class="mt-1 block w-full"
@@ -89,7 +92,7 @@ const submit = () => {
                         autocomplete="new-password"
                     />
 
-                    <InputError
+                    <FormInputError
                         class="mt-2"
                         :message="form.errors.password_confirmation"
                     />
@@ -103,13 +106,13 @@ const submit = () => {
                         ¿Ya estás registrado?
                     </Link>
 
-                    <PrimaryButton
+                    <ButtonPrimary
                         class="ms-4"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Registrarse
-                    </PrimaryButton>
+                    </ButtonPrimary>
                 </div>
             </form>
         </div>

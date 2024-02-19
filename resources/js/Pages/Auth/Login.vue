@@ -1,10 +1,10 @@
 <script setup>
 import Checkbox from "@/Components/Checkbox.vue";
 import GuestLayout from "@/Layouts/GuestLayout.vue";
-import InputError from "@/Components/Form/InputError.vue";
-import InputLabel from "@/Components/Form/InputLabel.vue";
-import PrimaryButton from "@/Components/Button/PrimaryButton.vue";
-import TextInput from "@/Components/Form/TextInput.vue";
+import FormInputError from "@/Components/Form/FormInputError.vue";
+import FormInputLabel from "@/Components/Form/FormInputLabel.vue";
+import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
+import FormTextInput from "@/Components/Form/FormTextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 import FormBlock from "@/Components/Form/FormBlock.vue";
 
@@ -45,8 +45,8 @@ console.log(props.status);
         >
             <form @submit.prevent="submit">
                 <FormBlock>
-                    <InputLabel for="email" value="Email" />
-                    <TextInput
+                    <FormInputLabel for="email" value="Email" />
+                    <FormTextInput
                         id="email"
                         type="email"
                         class="mt-1 block w-full"
@@ -55,11 +55,11 @@ console.log(props.status);
                         autofocus
                         autocomplete="username"
                     />
-                    <InputError class="mt-2" :message="form.errors.email" />
+                    <FormInputError class="mt-2" :message="form.errors.email" />
                 </FormBlock>
                 <FormBlock class="mt-4">
-                    <InputLabel for="password" value="Password" />
-                    <TextInput
+                    <FormInputLabel for="password" value="Password" />
+                    <FormTextInput
                         id="password"
                         type="password"
                         class="mt-1 block w-full"
@@ -67,7 +67,10 @@ console.log(props.status);
                         required
                         autocomplete="current-password"
                     />
-                    <InputError class="mt-2" :message="form.errors.password" />
+                    <FormInputError
+                        class="mt-2"
+                        :message="form.errors.password"
+                    />
                 </FormBlock>
                 <FormBlock class="mt-4">
                     <label class="flex items-center">
@@ -88,13 +91,13 @@ console.log(props.status);
                     >
                         Forgot your password?
                     </Link>
-                    <PrimaryButton
+                    <ButtonPrimary
                         class="ms-4"
                         :class="{ 'opacity-25': form.processing }"
                         :disabled="form.processing"
                     >
                         Log in
-                    </PrimaryButton>
+                    </ButtonPrimary>
                 </div>
             </form>
         </div>
