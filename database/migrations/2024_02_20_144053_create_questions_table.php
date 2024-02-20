@@ -12,17 +12,20 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->id();          
             $table->string('question', 191)->unique();
             $table->string('answer', 255);
             $table->string('opt_1', 255);
             $table->string('opt_2', 255);
             $table->string('opt_3', 255);
+            $table->integer('score')->unsigned();
+            $table->foreignId('user_id')->nullable();
+            $table->foreignId('category_id');
             $table->timestamps();
 
             // Define foreign key constrait
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

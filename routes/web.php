@@ -41,7 +41,6 @@ Route::group(['middleware' => 'auth'], function() {
         Route::get('/questions', 
         [\App\Http\Controllers\Admin\QuestionController::class, 'index'])
         ->name('questions.index');
-        Route::get('/questions/{}')
     });
 
     Route::group([
