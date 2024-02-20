@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -14,10 +15,9 @@ class QuestionController extends Controller
      */
     public function index(): Response
     {
-        $question = Question::all();
-        dd($question);
-
-        return Inertia::render('Welcome');
+        return Inertia::render('Dashboard/Questions', [
+            'questions' => Question::all()
+        ]);
     }
 
     /**

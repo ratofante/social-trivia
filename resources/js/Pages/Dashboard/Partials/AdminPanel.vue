@@ -10,7 +10,9 @@ import LinkSimple from "@/Components/Link/LinkSimple.vue";
         <div>
             <ul>
                 <li>
-                    <LinkSimple href="/admin/questions"> Preguntas </LinkSimple>
+                    <LinkSimple :href="route('admin.questions.index')">
+                        Preguntas
+                    </LinkSimple>
                 </li>
                 <li>
                     <LinkSimple href="/admin/users"> Jugadores </LinkSimple>

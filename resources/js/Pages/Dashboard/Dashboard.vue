@@ -2,7 +2,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { usePage, Head } from "@inertiajs/vue3";
 import CardDashboard from "@/Components/Card/CardDashboard.vue";
-import AdminDashboardMenu from "@/Components/Admin/AdminDashboardMenu.vue";
+import AdminPanel from "@/Pages/Dashboard/Partials/AdminPanel.vue";
 const page = usePage();
 
 defineProps({
@@ -26,9 +26,8 @@ defineProps({
                 >!
                 <br />
             </div>
-            <template v-if="isAdmin">
-                <AdminDashboardMenu />
-            </template>
+            <AdminPanel v-if="isAdmin" />
+
             <div class="flex flex-col gap-4 py-4 md:flex-wrap">
                 <CardDashboard
                     title="trivia simple"

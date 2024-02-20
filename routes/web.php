@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\QuestionController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,15 +25,44 @@ Route::get('/', function () {
     ]);
 });
 
-//Route::get('/questions', [QuestionController::class, 'index']);
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 });
 
- Route::middleware(['auth', 'verified', 'role:admin'])->group(function() {
-    Route::resource('questions', QuestionController::class);
- });
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::group([
+        'prefix' => 'admin',
+        'middleware' => 'role:admin',
+        'as' => 'admin.',
+    ], function() {
+        Route::get('/questions', 
+        [\App\Http\Controllers\Admin\QuestionController::class, 'index'])
+        ->name('questions.index');
+        Route::get('/questions/{}')
+    });
+
+    Route::group([
+        'prefix' => 'user',
+        'middleware' => 'role:player',
+        'as' => 'user.',
+    ], function() {
+        Route::get('/questions',
+        [\App\Http\Controllers\Player\QuestionController::class, 'index'])
+        ->name('questions.index');
+    });
+});
+
+
+//  Route::middleware(['auth', 'verified'])->group(function() {
+//     Route::get('/questions', [QuestionController::class, 'index'])
+//         ->middleware('role:admin')
+//         ->name('question.index');
+//     Route::get('/questions/create', [QuestionController::class, 'create'])
+//         ->name('question.create');
+//  });
 
 
 Route::middleware('auth')->group(function () {

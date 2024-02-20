@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -15,7 +13,7 @@ class DashboardController extends Controller
     public function index(Request $request): Response
     {
         $user = Auth::user();
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Dashboard/Dashboard', [
             "isAdmin" => $user->hasRole('admin'),
             "permissions" => $user->getPermissions(),
         ]);
