@@ -1,20 +1,20 @@
 <script setup>
 import LinkPrimary from "../Link/LinkPrimary.vue";
-import { reactive, ref } from "vue";
-
+import { ref } from "vue";
+import { usePage } from "@inertiajs/vue3";
+const page = usePage();
 const props = defineProps({
     question: {
         type: Object,
         required: true,
     },
 });
-
 const isOpen = ref(false);
 </script>
 
 <template>
     <div
-        class="grid grid-cols-12 text-white border-b border-green border-opacity-25 py-8 first:pt-0 last:pb-0"
+        class="grid grid-cols-12 text-white border-b border-green border-opacity-25 py-8 first:pt-0"
     >
         <div class="col-span-8">
             <div
@@ -31,7 +31,16 @@ const isOpen = ref(false);
         </div>
         <div class="col-span-4 text-end justify-self-end text-sm tracking-wide">
             Puntaje:
-            <span class="text-green font-medium tracking-tight"
+            <span
+                class="font-medium tracking-tight"
+                :class="{
+                    'text-green': question.score >= 75,
+                    'text-blue-500':
+                        question.score >= 50 && question.score < 75,
+                    'text-orange-500':
+                        question.score >= 25 && question.score < 50,
+                    'text-red-500': question.score < 25,
+                }"
                 >{{ question.score }}/100</span
             >
         </div>
@@ -91,7 +100,7 @@ const isOpen = ref(false);
                 Opción C
             </div>
             <p class="text-sm opacity-75 line-clamp-2">{{ question.opt_3 }}</p>
-            <div class="flex gap-4 mt-4">
+            <div v-if="page.props.roles.admin" class="flex gap-4 mt-4">
                 <LinkPrimary
                     title="Editar"
                     :href="

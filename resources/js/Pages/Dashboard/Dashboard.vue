@@ -2,11 +2,10 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { usePage, Head } from "@inertiajs/vue3";
 import CardDashboard from "@/Components/Card/CardDashboard.vue";
-import AdminPanel from "@/Pages/Dashboard/Partials/AdminPanel.vue";
+import SectionsPanel from "@/Pages/Dashboard/Partials/SectionsPanel.vue";
 import ContainerBase from "@/Components/Container/ContainerBase.vue";
 import TextTitle from "@/Components/Text/TextTitle.vue";
 const page = usePage();
-
 defineProps({
     isAdmin: {
         type: Boolean,
@@ -26,7 +25,7 @@ defineProps({
                 <span class="capitalize">{{ page.props.auth.user.name }}</span
                 >!
             </TextTitle>
-            <AdminPanel v-if="isAdmin" />
+            <SectionsPanel />
 
             <div class="flex flex-col gap-4 py-4 md:flex-wrap">
                 <CardDashboard

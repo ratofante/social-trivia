@@ -16,16 +16,16 @@ export default {
                 sans: ["NeueMontreal", ...defaultTheme.fontFamily.sans],
                 serif: ["Britannic-Bold", ...defaultTheme.fontFamily.serif],
             },
-        },
-        colors: {
-            gray: {
-                DEFAULT: "#323232",
-                dark: "#242525",
-                light: "#CFCFCF",
-            },
-            green: "#5CC787",
-            white: {
-                DEFAULT: "#FAFBFF",
+            colors: {
+                gray: {
+                    DEFAULT: "#323232",
+                    dark: "#242525",
+                    light: "#CFCFCF",
+                },
+                green: "#5CC787",
+                white: {
+                    DEFAULT: "#FAFBFF",
+                },
             },
         },
     },
