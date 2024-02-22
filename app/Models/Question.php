@@ -16,7 +16,9 @@ class Question extends Model
         'answer',
         'opt_1',
         'opt_2',
-        'opt_3'
+        'opt_3',
+        'category_id',
+        'score',
     ];
 
     public function users(): BelongsTo

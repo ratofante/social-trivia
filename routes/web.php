@@ -16,6 +16,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -28,29 +29,40 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
 });
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
     Route::group([
         'prefix' => 'admin',
         'middleware' => 'role:admin',
         'as' => 'admin.',
-    ], function() {
-        Route::get('/questions', 
-        [\App\Http\Controllers\Admin\QuestionController::class, 'index'])
-        ->name('questions.index');
+    ], function () {
+        Route::get(
+            '/questions',
+            [\App\Http\Controllers\Admin\QuestionController::class, 'index']
+        )
+            ->name('questions.index');
+        Route::get('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'edit'])
+            ->where('question', '[0-9]+')
+            ->name('questions.edit');
+        Route::patch('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'update'])
+            ->where('question', '[0-9]+')
+            ->name('questions.update');
     });
 
     Route::group([
         'prefix' => 'user',
         'middleware' => 'role:player',
         'as' => 'user.',
-    ], function() {
-        Route::get('/questions',
-        [\App\Http\Controllers\Player\QuestionController::class, 'index'])
-        ->name('questions.index');
+    ], function () {
+        Route::get(
+            '/questions',
+            [\App\Http\Controllers\Player\QuestionController::class, 'index']
+        )
+            ->name('questions.index');
     });
 });
 
@@ -70,4 +82,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
