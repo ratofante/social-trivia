@@ -3,6 +3,8 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { usePage, Head } from "@inertiajs/vue3";
 import CardDashboard from "@/Components/Card/CardDashboard.vue";
 import AdminPanel from "@/Pages/Dashboard/Partials/AdminPanel.vue";
+import ContainerBase from "@/Components/Container/ContainerBase.vue";
+import TextTitle from "@/Components/Text/TextTitle.vue";
 const page = usePage();
 
 defineProps({
@@ -18,14 +20,12 @@ defineProps({
 <template>
     <AuthenticatedLayout>
         <Head title="Panel" />
-
-        <div class="p-4 pt-12">
-            <div class="font-serif text-white text-2xl mb-4">
+        <ContainerBase>
+            <TextTitle>
                 Bienvenido/a,<br />
                 <span class="capitalize">{{ page.props.auth.user.name }}</span
                 >!
-                <br />
-            </div>
+            </TextTitle>
             <AdminPanel v-if="isAdmin" />
 
             <div class="flex flex-col gap-4 py-4 md:flex-wrap">
@@ -43,6 +43,6 @@ defineProps({
                     :avalaible="permissions.includes('trivia social')"
                 />
             </div>
-        </div>
+        </ContainerBase>
     </AuthenticatedLayout>
 </template>
