@@ -36,21 +36,21 @@ class UserSeeder extends Seeder
             'email' => 'cumbia@gmail.com',
             'email_verified_at' => now(),
             'password' => 'cumbia1234',
-        ])->assignRole('novice');
+        ])->assignRole('player', 'novice');
 
         User::create([
             'name' => 'sumo',
             'email' => 'sumo@gmail.com',
             'email_verified_at' => now(),
             'password' => 'sumo1234',
-        ])->assignRole('apprentice');
+        ])->assignRole('player', 'apprentice');
 
         User::create([
             'name' => 'sumerio',
             'email' => 'sumerio@gmail.com',
             'email_verified_at' => now(),
             'password' => 'sumerio1234'
-        ])->assignRole('adept');
+        ])->assignRole('player', 'adept');
 
         $this->enableForeignKeys();
     }

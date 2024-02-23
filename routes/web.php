@@ -54,9 +54,9 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::group([
-        'prefix' => 'user',
+        'prefix' => 'player',
         'middleware' => 'role:player',
-        'as' => 'user.',
+        'as' => 'player.',
     ], function () {
         Route::get(
             '/questions',

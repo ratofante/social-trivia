@@ -23,7 +23,9 @@ class RoleSeeder extends Seeder
                 'question show',
                 'question edit',
                 'question delete',
-            ]); 
+            ]);
+
+        Role::create(['name' => 'player']);
 
         Role::create(['name' => 'novice'])
             ->givePermissionTo([
@@ -37,7 +39,7 @@ class RoleSeeder extends Seeder
                 'question create',
                 'question show',
             ]);
-        
+
         Role::create(['name' => 'adept'])
             ->givePermissionTo([
                 'trivia simple',
