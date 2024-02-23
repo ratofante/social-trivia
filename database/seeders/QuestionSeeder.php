@@ -38,6 +38,39 @@ class QuestionSeeder extends Seeder
             }
         }
 
+        $sumo_questions = include(database_path('data/sumo_questions.php'));
+
+        foreach ($sumo_questions as $question => $field) {
+            Question::create([
+                'question' => $field['question'],
+                'answer' => $field['answer'],
+                'opt_1' => $field['opt_1'],
+                'opt_2' => $field['opt_2'],
+                'opt_3' => $field['opt_3'],
+                'category_id' => $field['category_id'],
+                'user_id' => 3,
+                'score' => $field['score']
+            ]);
+        }
+
+        $sumerio_questions = include(database_path('data/sumerio_questions.php'));
+
+        foreach ($sumerio_questions as $question => $field) {
+            Question::create([
+                'question' => $field['question'],
+                'answer' => $field['answer'],
+                'opt_1' => $field['opt_1'],
+                'opt_2' => $field['opt_2'],
+                'opt_3' => $field['opt_3'],
+                'category_id' => $field['category_id'],
+                'user_id' => 4,
+                'score' => $field['score']
+            ]);
+        }
+
+
+
+
         $this->enableForeignKeys();
     }
 }

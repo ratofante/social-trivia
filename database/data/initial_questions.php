@@ -11,6 +11,24 @@ return [
             "score" => 100
         ],
         [
+            "question" => "¿Cuántos anillos tiene el logo de las olimpiadas?",
+            "answer" => "5",
+            "opt_1" => "6",
+            "opt_2" => "7",
+            "opt_3" => "8",
+            "category_id" => 1,
+            "score" => 100
+        ],
+        [
+            "question" => "¿En qué año se alcanzó la cima del monte Everest?",
+            "answer" => "1953",
+            "opt_1" => "1944",
+            "opt_2" => "1961",
+            "opt_3" => "1973",
+            "category_id" => 1,
+            "score" => 100
+        ],
+        [
             "question" => "¿Qué país ha ganado más títulos de la Copa Mundial de la FIFA?",
             "answer" => "Brasil",
             "opt_1" => "Alemania",
@@ -93,6 +111,33 @@ return [
         ],
     ],
     "arts" => [
+        [
+            "question" => "¿Cuál de estos instrumentos puede producir las notas más alta?",
+            "answer" => "Piccolo",
+            "opt_1" => "Corno Francés",
+            "opt_2" => "Flauta Traversa",
+            "opt_3" => "Violín",
+            "category_id" => 2,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué movimiento de expresión artística surgió durante el Imperio Romano de Oriente?",
+            "answer" => "Bizantino",
+            "opt_1" => "Helénico",
+            "opt_2" => "Barroco",
+            "opt_3" => "Levantina",
+            "category_id" => 2,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Quién pintó el jardín de las delicias?",
+            "answer" => "El Bosco",
+            "opt_1" => "Salvador Dali",
+            "opt_2" => "Francisco Goya",
+            "opt_3" => "Rembrandt",
+            "category_id" => 2,
+            "score" => 100
+        ],
         [
             "question" => "¿Quién es a menudo llamado el 'Rey del Pop'?",
             "answer" => "Michael Jackson",
@@ -272,7 +317,25 @@ return [
             "opt_3" => "Hatshepsut",
             "category_id" => 2,
             "score" => 100
-        ]
+        ],
+        [
+            "question" => "¿Cuál fue la primera película en color producida por Disney?",
+            "answer" => "Blanca Nieves y los 7 enanos",
+            "opt_1" => "Toy Story",
+            "opt_2" => "La bella durmiente",
+            "opt_3" => "Cenicienta",
+            "category_id" => 2,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Quién es el padrino de la música Soul?",
+            "answer" => "James Brown",
+            "opt_1" => "Curtis Mayfield",
+            "opt_2" => "Michael Jackson",
+            "opt_3" => "Labi Siffre",
+            "category_id" => 2,
+            "score" => 100
+        ],
     ],
     "science" => [
         [
@@ -281,6 +344,33 @@ return [
             "opt_1" => "CO2",
             "opt_2" => "NaCl",
             "opt_3" => "O2",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuántas estrellas hay en el sistema solar?",
+            "answer" => "1",
+            "opt_1" => "437.352 contadas hasta ahora",
+            "opt_2" => "3",
+            "opt_3" => "8",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué tipo sanguíneo es el menos común en el cuerpo humano?",
+            "answer" => "AB negativo",
+            "opt_1" => "0 positivo",
+            "opt_2" => "B negativo",
+            "opt_3" => "A positivo",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál es el peso promedio de un cerebro humano adulto?",
+            "answer" => "4 kilogramos",
+            "opt_1" => "12 kilogramos",
+            "opt_2" => "1200 gramos",
+            "opt_3" => "400 gramos",
             "category_id" => 3,
             "score" => 100
         ],
@@ -364,7 +454,133 @@ return [
             "opt_3" => "Precipitación",
             "category_id" => 3,
             "score" => 100
-        ]
+        ],
+        [
+            "question" => "¿De dónde sacan nutrientes las plantas?",
+            "answer" => "Desechos de animales",
+            "opt_1" => "Oxígeno",
+            "opt_2" => "Agua",
+            "opt_3" => "De las abejas",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "La sustancia que forma la mayor parte de una célula se llama:",
+            "answer" => "Citoplasma",
+            "opt_1" => "Cloroplasma",
+            "opt_2" => "Citofilia",
+            "opt_3" => "Núcleo",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué tipo de galaxia es la Vía Láctea?",
+            "answer" => "Espiral",
+            "opt_1" => "Elíptica",
+            "opt_2" => "Circular",
+            "opt_3" => "Irregular",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué porcentaje de tu visión perderías si quedas ciego de un ojo?",
+            "answer" => "20%",
+            "opt_1" => "50%",
+            "opt_2" => "35%",
+            "opt_3" => "60%",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuánto puede correr un avestruz?",
+            "answer" => "65 kilómetros por hora",
+            "opt_1" => "50 kilómetros por hora",
+            "opt_2" => "80 kilómetros por hora",
+            "opt_3" => "35 kilómetros por hora",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "La frase -Pienso, luego existo- fue acuñada por:",
+            "answer" => "Descartes",
+            "opt_1" => "Platón",
+            "opt_2" => "Sócrates",
+            "opt_3" => "Hegel",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuántos planetas hay en nuestra galaxia?",
+            "answer" => "Por lo menos 50 mil millones de planetas",
+            "opt_1" => "Hay 9 planetas",
+            "opt_2" => "Hay 10 planetas",
+            "opt_3" => "Hay 50 millones de planetas",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Las luneas Titania y Oberon corresponden a qué planeta de nuestro sistema solar?",
+            "answer" => "Urano",
+            "opt_1" => "Neptuno",
+            "opt_2" => "Saturno",
+            "opt_3" => "Marte",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué vitaminas no se encuentra en un huevo de gallina?",
+            "answer" => "Vitamina C",
+            "opt_1" => "Vitamina A",
+            "opt_2" => "Vitamina B",
+            "opt_3" => "Vitamina D",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Quién es conocido por descubrir que los gérmenes producen enfermedades?",
+            "answer" => "Louis Pasteur",
+            "opt_1" => "Gregor Mendel",
+            "opt_2" => "Alfred Wallace",
+            "opt_3" => "Charles Darwin",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuán rápido puede correr un avestruz?",
+            "answer" => "65 kilómetros por hora",
+            "opt_1" => "50 kilómetros por hora",
+            "opt_2" => "80 kilómetros por hora",
+            "opt_3" => "35 kilómetros por hora",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "Todas las células tienen:",
+            "answer" => "Membrana celular",
+            "opt_1" => "Tanto membrana como paredes celulares",
+            "opt_2" => "Paredes celulares",
+            "opt_3" => "Citofilia",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué astrónomo tomó medidas precisas del sistema solar y cientos de estrellas previamente a la invención del telescopio?",
+            "answer" => "Tycho Brahe",
+            "opt_1" => "Johannes Kepler",
+            "opt_2" => "Galileo Galilei",
+            "opt_3" => "Claudius Ptolemaeus",
+            "category_id" => 3,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál de las siguientes no es una teoría científica obsoleta?",
+            "answer" => "Selección Natural",
+            "opt_1" => "Lamarckismo",
+            "opt_2" => "Generación espontánea",
+            "opt_3" => "Teoría del Flogisto",
+            "category_id" => 3,
+            "score" => 100
+        ],
     ],
     "history" => [
         [
@@ -373,6 +589,105 @@ return [
             "opt_1" => "Thomas Jefferson",
             "opt_2" => "Abraham Lincoln",
             "opt_3" => "John Adams",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿La muerte de quién desató la Primera Guerra Mundial?",
+            "answer" => "Archiduque Francisco Fernando",
+            "opt_1" => "Guillermo II",
+            "opt_2" => "James Ussher",
+            "opt_3" => "La reina Victoria",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál de los siguientes países fue neutral en la Primera Guerra Mundial?",
+            "answer" => "Noruega",
+            "opt_1" => "Alemania",
+            "opt_2" => "Italia",
+            "opt_3" => "Inglaterra",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál de los siguientes libros fue escrito por Niccolo Machiavelli?",
+            "answer" => "El príncipe",
+            "opt_1" => "El arte de la guerra",
+            "opt_2" => "Guerra y Paz",
+            "opt_3" => "En tiempos de guerra",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Simón Bolívar fue presidente de qué país?",
+            "answer" => "Perú",
+            "opt_1" => "Argentina",
+            "opt_2" => "Chile",
+            "opt_3" => "Bolivia",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Quién fue teórico político y compañero de Karl Marx?",
+            "answer" => "Friedrich Engels",
+            "opt_1" => "Friedrich Reich",
+            "opt_2" => "Friedrich Nietzsche",
+            "opt_3" => "Mijaíl Bakunin",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Dónde se ubicaban las civilizaciones de la Era de Bronce Egeo?",
+            "answer" => "Grecia",
+            "opt_1" => "España",
+            "opt_2" => "Algeria",
+            "opt_3" => "Turquía",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Zulia es una provincia, ¿de qué país?",
+            "answer" => "Venezuela",
+            "opt_1" => "Brasil",
+            "opt_2" => "Ecuador",
+            "opt_3" => "Colombia",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué isla caribeña tiene la mayor superficie?",
+            "answer" => "Cuba",
+            "opt_1" => "Puerto Rico",
+            "opt_2" => "Jamaica",
+            "opt_3" => "La Española",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué fruto seco se utiliza para preparar mazapán?",
+            "answer" => "Almendras",
+            "opt_1" => "Castañas de cajú",
+            "opt_2" => "Nueces",
+            "opt_3" => "Maní",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿En qué país se originó la tradición del árbol de Navidad?",
+            "answer" => "Alemania",
+            "opt_1" => "Estados Unidos",
+            "opt_2" => "Irlanda",
+            "opt_3" => "Bélgica",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál es el país más pequeño en el mundo?",
+            "answer" => "El Vaticano",
+            "opt_1" => "Mónaco",
+            "opt_2" => "San Marino",
+            "opt_3" => "Israel",
             "category_id" => 4,
             "score" => 100
         ],
@@ -456,6 +771,96 @@ return [
             "opt_3" => "Victoria",
             "category_id" => 4,
             "score" => 100
-        ]
+        ],
+        [
+            "question" => "¿De cuáles de estos productos Brasil es el mayor productor?",
+            "answer" => "Café",
+            "opt_1" => "Arroz",
+            "opt_2" => "Aceite",
+            "opt_3" => "Azúcar",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿En qué país se encuentra Transilvania?",
+            "answer" => "Rumania",
+            "opt_1" => "Bulgaria",
+            "opt_2" => "Croacia",
+            "opt_3" => "Serbia",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "Según Sigmund Freud, el yo, el superyó y ¿qué otra instancia estructuran el psiquismo?",
+            "answer" => "Ello",
+            "opt_1" => "Irracionalidad",
+            "opt_2" => "Inconsciente",
+            "opt_3" => "Líbido",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿A quién pertenece la locución: Veni, vidi, vici?",
+            "answer" => "Julio Cesar",
+            "opt_1" => "César Augusto",
+            "opt_2" => "Tiberio",
+            "opt_3" => "Marco Antonio",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "El Goulash es un tipo de sopa con carne de res. ¿De qué país proviene?",
+            "answer" => "Hungría",
+            "opt_1" => "República Checa",
+            "opt_2" => "Eslovaquia",
+            "opt_3" => "Irlanda",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál es la velocidad del sonido?",
+            "answer" => "1.200 kilómetros por hora",
+            "opt_1" => "120 kilómetros por hora",
+            "opt_2" => "400 kilómetros por hora",
+            "opt_3" => "700 kilómetros por hora",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál es la mejor manera de saber los años de un árbol?",
+            "answer" => "Contando sus anillos internos",
+            "opt_1" => "Midiendo el ancho del árbol según su especie",
+            "opt_2" => "Contando la cantidad de ramas y hojas",
+            "opt_3" => "Midiendo su altura",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿De qué está compuesto mayormente el Sol?",
+            "answer" => "Gas",
+            "opt_1" => "Lava líquida",
+            "opt_2" => "Hierro derretido",
+            "opt_3" => "Roca",
+            "category_id" => 4,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Qué significan las siglas en inglés: S.O.S?",
+            "answer" => "Save Our Souls",
+            "opt_1" => "Save Our Ship",
+            "opt_2" => "Save Our Seal",
+            "opt_3" => "Save Our Saints",
+            "category_id" => 2,
+            "score" => 100
+        ],
+        [
+            "question" => "¿Cuál es la capital de Pakistán?",
+            "answer" => "Islamabad",
+            "opt_1" => "Lahore",
+            "opt_2" => "Karachi",
+            "opt_3" => "Afganistán",
+            "category_id" => 4,
+            "score" => 100
+        ],
     ]
 ];

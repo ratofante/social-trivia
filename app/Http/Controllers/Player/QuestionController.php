@@ -13,9 +13,19 @@ class QuestionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        return Inertia::render('Welcome');
+        $player_questions = Question::query()
+            ->whereHas('user', function ($query) use ($request) {
+                $query->where('id', $request->user()->id);
+            })
+            ->orderBy('created_at')
+            ->paginate(20);
+
+
+        return Inertia::render('Dashboard/Questions', [
+            "questions" => $player_questions
+        ]);
     }
 
     /**

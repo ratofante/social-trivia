@@ -30,7 +30,8 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return [
+
+        $sharedData = [
             ...parent::share($request),
             'auth' => [
                 'user' => $request->user(),
@@ -40,5 +41,20 @@ class HandleInertiaRequests extends Middleware
                 'location' => $request->url(),
             ],
         ];
+
+        $user = $request->user();
+
+        if ($user) {
+            $roles = $user->getRoleNames();
+            $sharedData['roles'] = [
+                'admin' => $roles->contains('admin'),
+                'player' =>  $roles->contains('player'),
+                'novice' =>  $roles->contains('novice'),
+                'apprentice' =>  $roles->contains('apprentice'),
+                'adept' =>  $roles->contains('adept')
+            ];
+        }
+
+        return $sharedData;
     }
 }

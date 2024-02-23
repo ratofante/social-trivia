@@ -20,7 +20,7 @@ class QuestionController extends Controller
      */
     public function index(): Response
     {
-        $questions = Question::query()->paginate(20);
+        $questions = Question::query()->orderBy('created_at')->paginate(20);
 
         return Inertia::render('Dashboard/Questions', [
             'questions' => QuestionResource::collection($questions)
