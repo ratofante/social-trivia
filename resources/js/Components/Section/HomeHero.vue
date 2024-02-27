@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+import ButtonPrimary from "../Button/ButtonPrimary.vue";
+</script>
 
 <template>
     <div class="h-screen relative bg-gray-dark">
@@ -24,20 +26,17 @@
         </div>
         <!-- hero portrait-->
         <div class="absolute center-absolute text-center">
-            <h1 class="font-serif text-6xl text-white">Trivium</h1>
+            <h1 class="font-serif text-6xl md:text-8xl 2xl:text-9xl text-white">
+                Trivium
+            </h1>
             <ul
-                class="font-sans text-white opacity-65 text-base font-medium tracking-wider py-2"
+                class="font-sans text-white opacity-65 text-base font-medium tracking-wider py-4"
             >
-                <li class="pb-1">1.5mil usuarios</li>
-                <li class="pb-1">65mil preguntas</li>
-                <li class="pb-1">2mill trivias jugadas</li>
+                <li class="pb-2">1.5mil usuarios</li>
+                <li class="pb-2">65mil preguntas</li>
+                <li class="pb-2">2mill trivias jugadas</li>
             </ul>
-            <div>
-                <button class="font-serif text-xl py-2 px-4 rounded bg-green">
-                    Juego Rápido
-                </button>
-                <div></div>
-            </div>
+            <ButtonPrimary> Juego Rápido </ButtonPrimary>
         </div>
     </div>
 </template>

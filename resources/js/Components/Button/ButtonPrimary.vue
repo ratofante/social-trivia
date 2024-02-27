@@ -18,7 +18,7 @@ const classes =
 <template>
     <button
         :class="classes"
-        class="inline-flex font-serif font-medium items-center bg-green border border-transparent rounded-md text-gray tracking-wide hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"
+        class="inline-flex font-serif font-medium justify-center items-center bg-green border border-transparent rounded-md text-gray tracking-wide hover:bg-gray-700 hover:text-green focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-green focus:ring-2 transition ease-in-out duration-150"
     >
         <slot />
     </button>

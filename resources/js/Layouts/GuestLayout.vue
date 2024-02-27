@@ -1,7 +1,5 @@
 <script setup>
-import ApplicationLogo from "@/Components/ApplicationLogo.vue";
 import Navbar from "@/Components/Navbar.vue";
-import { Link } from "@inertiajs/vue3";
 
 defineProps({
     canLogin: {
@@ -15,7 +13,9 @@ defineProps({
 
 <template>
     <Navbar :canLogin="canLogin" :canRegister="canRegister" />
-    <div class="pt-12">
+    <div
+        class="flex flex-col items-center justify-center bg-gray-dark px-4 pt-12 min-h-screen"
+    >
         <slot />
     </div>
 </template>

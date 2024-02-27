@@ -1,35 +1,30 @@
 <script setup>
 import ContainerBase from "@/Components/Container/ContainerBase.vue";
+import ButtonDropdown from "@/Components/Button/ButtonDropdown.vue";
 import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
 import LinkSimple from "@/Components/Link/LinkSimple.vue";
-import Dropdown from "@/Components/Dropdown.vue";
 import { usePage } from "@inertiajs/vue3";
+import FilterForm from "./FilterForm.vue";
 
 const page = usePage();
 </script>
 
 <template>
     <ContainerBase class="sticky top-12 z-10 bg-gray-dark pt-4 pb-2">
-        <div class="flex gap-4 justify-between">
-            <div class="relative flex-1 overflow-hidden">
-                <div class="flex gap-2 overflow-x-auto">
+        <div class="flex gap-4 justify-between items-center">
+            <div class="relative flex-1">
+                <div class="flex gap-2 p-2">
+                    <ButtonDropdown>
+                        <template v-slot:trigger>
+                            <ButtonPrimary size="small">Filtros</ButtonPrimary>
+                        </template>
+                        <template v-slot:content>
+                            <FilterForm />
+                        </template>
+                    </ButtonDropdown>
                     <template v-if="page.props.roles.admin">
                         <ButtonPrimary size="small">Agregar</ButtonPrimary>
                     </template>
-
-                    <ButtonPrimary size="small">Ordenar</ButtonPrimary>
-                    <Dropdown>
-                        <template v-slot:trigger> Filtrar </template>
-                        <template v-slot:content>
-                            <ul>
-                                <li>1</li>
-                                <li>2</li>
-                                <li>3</li>
-                                <li>4</li>
-                            </ul>
-                        </template>
-                    </Dropdown>
-                    <ButtonPrimary size="small">Filtrar</ButtonPrimary>
                 </div>
                 <div
                     style="

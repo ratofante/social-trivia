@@ -18,12 +18,24 @@ class QuestionController extends Controller
      * 
      * @return QuestionCollection
      */
-    public function index(): Response
+    public function index(Request $request): Response
     {
-        $questions = Question::query()->orderBy('created_at')->paginate(20);
+        $orderByTime = $request->query('time') === 'recent' ? 'created_at desc' : 'created_at asc';
+        $orderByScore = $request->query('score') === 'best' ? 'score desc' : 'score asc';
+
+        $questions = Question::query()
+            ->orderByRaw($orderByTime)
+            ->orderByRaw($orderByScore)
+            ->paginate(20);
+
+        $filters = [
+            "time" => $request->query('time') === 'recent' ? true : false,
+            "score" => $request->query('score') === 'best' ? true : false
+        ];
 
         return Inertia::render('Dashboard/Questions', [
-            'questions' => QuestionResource::collection($questions)
+            'questions' => QuestionResource::collection($questions),
+            'filters' => $filters
         ]);
     }
 
@@ -71,7 +83,7 @@ class QuestionController extends Controller
         $question = Question::findOrFail($id);
         $question->update($request->all());
         $question->save();
-        return Redirect::route('admin.questions.edit', ['question' => $id]);
+        return Redirect::route('admin.questions.index');
     }
 
     /**
@@ -80,5 +92,19 @@ class QuestionController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    /**
+     * Returns questions based on the applied filters
+     * @return QuestionCollection
+     */
+    public function filter(Request $request): Response
+    {
+        dd($request->mostRecent);
+        $questions = null;
+
+        Inertia::render('Dashboard/Questions', [
+            'questions' => $questions
+        ]);
     }
 }

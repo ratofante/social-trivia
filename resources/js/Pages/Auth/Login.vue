@@ -40,66 +40,56 @@ console.log(props.status);
             {{ status }}
         </div>
 
-        <div
-            class="bg-gray-dark px-4 py-12 min-h-screen flex flex-col justify-center"
-        >
-            <form @submit.prevent="submit">
-                <FormBlock>
-                    <FormInputLabel for="email" value="Email" />
-                    <FormTextInput
-                        id="email"
-                        type="email"
-                        class="mt-1 block w-full"
-                        v-model="form.email"
-                        required
-                        autofocus
-                        autocomplete="username"
-                    />
-                    <FormInputError class="mt-2" :message="form.errors.email" />
-                </FormBlock>
-                <FormBlock class="mt-4">
-                    <FormInputLabel for="password" value="Password" />
-                    <FormTextInput
-                        id="password"
-                        type="password"
-                        class="mt-1 block w-full"
-                        v-model="form.password"
-                        required
-                        autocomplete="current-password"
-                    />
-                    <FormInputError
-                        class="mt-2"
-                        :message="form.errors.password"
-                    />
-                </FormBlock>
-                <FormBlock class="mt-4">
-                    <label class="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            v-model:checked="form.remember"
-                        />
-                        <span class="ms-2 text-sm text-white opacity-75"
-                            >Remember me</span
-                        >
-                    </label>
-                </FormBlock>
-                <div class="flex items-center justify-end mt-4">
-                    <Link
-                        v-if="canResetPassword"
-                        :href="route('password.request')"
-                        class="underline text-sm text-white opacity-75 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        <form @submit.prevent="submit" class="w-full max-w-md">
+            <FormBlock>
+                <FormInputLabel for="email" value="Email" />
+                <FormTextInput
+                    id="email"
+                    type="email"
+                    class="mt-1 block w-full"
+                    v-model="form.email"
+                    required
+                    autofocus
+                    autocomplete="username"
+                />
+                <FormInputError class="mt-2" :message="form.errors.email" />
+            </FormBlock>
+            <FormBlock class="mt-4">
+                <FormInputLabel for="password" value="Password" />
+                <FormTextInput
+                    id="password"
+                    type="password"
+                    class="mt-1 block w-full"
+                    v-model="form.password"
+                    required
+                    autocomplete="current-password"
+                />
+                <FormInputError class="mt-2" :message="form.errors.password" />
+            </FormBlock>
+            <FormBlock class="mt-4">
+                <label class="flex items-center">
+                    <Checkbox name="remember" v-model:checked="form.remember" />
+                    <span class="ms-2 text-sm text-white opacity-75"
+                        >Remember me</span
                     >
-                        Forgot your password?
-                    </Link>
-                    <ButtonPrimary
-                        class="ms-4"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                    >
-                        Log in
-                    </ButtonPrimary>
-                </div>
-            </form>
-        </div>
+                </label>
+            </FormBlock>
+            <div class="flex items-center justify-end mt-12">
+                <Link
+                    v-if="canResetPassword"
+                    :href="route('password.request')"
+                    class="underline text-sm text-white opacity-75 hover:text-green rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    Forgot your password?
+                </Link>
+                <ButtonPrimary
+                    class="ms-4"
+                    :class="{ 'opacity-25': form.processing }"
+                    :disabled="form.processing"
+                >
+                    Log in
+                </ButtonPrimary>
+            </div>
+        </form>
     </GuestLayout>
 </template>

@@ -32,7 +32,11 @@ const classes = computed(() =>
 </script>
 
 <template>
-    <Link :href="href" class="inline w-fit font-medium" :class="classes">
+    <Link
+        :href="href"
+        class="inline w-fit font-medium tracking-wider"
+        :class="classes"
+    >
         <slot />
     </Link>
 </template>

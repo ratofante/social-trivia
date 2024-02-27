@@ -112,7 +112,7 @@ const props = defineProps({
                     Perfil
                 </ResponsiveNavLink>
                 <ResponsiveNavLink :href="route('dashboard')">
-                    Trivias
+                    Social Trivia
                 </ResponsiveNavLink>
                 <ResponsiveNavLink
                     :href="route('logout')"
