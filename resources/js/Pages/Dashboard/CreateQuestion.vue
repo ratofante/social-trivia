@@ -4,14 +4,6 @@ import QuestionForm from "@/Components/Question/QuestionForm.vue";
 import TextTitle from "@/Components/Text/TextTitle.vue";
 import AuthenticatedLayoutVue from "@/Layouts/AuthenticatedLayout.vue";
 import { Head } from "@inertiajs/vue3";
-
-const props = defineProps({
-    question: {
-        type: Object,
-        required: true,
-    },
-});
-console.log(props.question);
 </script>
 
 <template>
@@ -19,9 +11,9 @@ console.log(props.question);
 
     <AuthenticatedLayoutVue>
         <ContainerBase>
-            <TextTitle> Editar pregunta </TextTitle>
+            <TextTitle> Crear Pregunta </TextTitle>
             <div>
-                <QuestionForm :question="question" action="edit" />
+                <QuestionForm action="create" />
             </div>
         </ContainerBase>
     </AuthenticatedLayoutVue>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Question\UpdateQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\RedirectResponse;
@@ -44,7 +45,7 @@ class QuestionController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Dashboard/CreateQuestion');
     }
 
     /**
@@ -77,10 +78,14 @@ class QuestionController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @param \Illuminate\Http\Requests\Question\UpdateQuestionRequest
+     * @param \App\Modesl\Question
+     * @return RedirectResponse
      */
-    public function update(Request $request, string $id): RedirectResponse
+    public function update(UpdateQuestionRequest $request, Question $question): RedirectResponse
     {
-        $question = Question::findOrFail($id);
+        //$question = Question::findOrFail($id);
         $question->update($request->all());
         $question->save();
         return Redirect::route('admin.questions.index');

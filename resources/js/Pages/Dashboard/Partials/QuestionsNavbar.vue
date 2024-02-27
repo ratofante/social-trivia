@@ -5,6 +5,7 @@ import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
 import LinkSimple from "@/Components/Link/LinkSimple.vue";
 import { usePage } from "@inertiajs/vue3";
 import FilterForm from "./FilterForm.vue";
+import LinkPrimary from "@/Components/Link/LinkPrimary.vue";
 
 const page = usePage();
 </script>
@@ -23,7 +24,11 @@ const page = usePage();
                         </template>
                     </ButtonDropdown>
                     <template v-if="page.props.roles.admin">
-                        <ButtonPrimary size="small">Agregar</ButtonPrimary>
+                        <LinkPrimary
+                            :href="route('admin.questions.create')"
+                            size="small"
+                            title="Agregar"
+                        />
                     </template>
                 </div>
                 <div

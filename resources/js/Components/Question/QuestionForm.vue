@@ -6,24 +6,32 @@ import FormInputLabel from "../Form/FormInputLabel.vue";
 import FormInputError from "../Form/FormInputError.vue";
 import ButtonPrimary from "../Button/ButtonPrimary.vue";
 
-const props = defineProps(["question"]);
+const props = defineProps(["question", "action"]);
 
 const form = useForm({
-    question: props.question.question,
-    answer: props.question.answer,
-    opt_1: props.question.opt_1,
-    opt_2: props.question.opt_2,
-    opt_3: props.question.opt_3,
+    question: props.question ? props.question.question : "",
+    answer: props.question ? props.question.answer : "",
+    opt_1: props.question ? props.question.opt_1 : "",
+    opt_2: props.question ? props.question.opt_2 : "",
+    opt_3: props.question ? props.question.opt_3 : "",
 });
+
+const createQuestion = () => {
+    form.post(route("admin.questions.store"));
+};
 
 const editQuestion = () => {
     form.patch(
         route("admin.questions.update", { question: props.question.id })
     );
 };
+
+const submitForm = () => {
+    props.action === "create" ? createQuestion() : editQuestion();
+};
 </script>
 <template>
-    <form @submit.prevent="editQuestion">
+    <form @submit.prevent="submitForm">
         <FormBlock>
             <FormInputLabel for="question" value="Pregunta" />
             <FormTextInput

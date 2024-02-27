@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::patch('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'update'])
             ->where('question', '[0-9]+')
             ->name('questions.update');
+        Route::get('/questions/create', [\App\Http\Controllers\Admin\QuestionController::class, 'create'])
+            ->name('questions.create');
     });
 
     Route::group([
