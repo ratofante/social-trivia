@@ -69,7 +69,7 @@ class QuestionController extends Controller
      */
     public function edit(string $id)
     {
-        $question = Question::find($id);
+        $question = Question::with('category')->find($id);
 
         return Inertia::render('Dashboard/EditQuestion', [
             'question' => $question
@@ -85,7 +85,8 @@ class QuestionController extends Controller
      */
     public function update(UpdateQuestionRequest $request, Question $question): RedirectResponse
     {
-        //$question = Question::findOrFail($id);
+        //dd($request->all());
+
         $question->update($request->all());
         $question->save();
         return Redirect::route('admin.questions.index');

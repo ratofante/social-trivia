@@ -26,7 +26,7 @@ class Question extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categories(): BelongsTo
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }

@@ -5,6 +5,7 @@ import FormTextInput from "../Form/FormTextInput.vue";
 import FormInputLabel from "../Form/FormInputLabel.vue";
 import FormInputError from "../Form/FormInputError.vue";
 import ButtonPrimary from "../Button/ButtonPrimary.vue";
+import CategoriesSelect from "@/Pages/Dashboard/Partials/CategoriesSelect.vue";
 
 const props = defineProps(["question", "action"]);
 
@@ -14,6 +15,7 @@ const form = useForm({
     opt_1: props.question ? props.question.opt_1 : "",
     opt_2: props.question ? props.question.opt_2 : "",
     opt_3: props.question ? props.question.opt_3 : "",
+    category_id: props.question ? props.question.category.id : "",
 });
 
 const createQuestion = () => {
@@ -87,6 +89,9 @@ const submitForm = () => {
                 autocomplete="opt_3"
             />
             <FormInputError :message="form.errors.opt_3" />
+        </FormBlock>
+        <FormBlock>
+            <CategoriesSelect v-model:categoryValue="form.category_id" />
         </FormBlock>
         <FormBlock>
             <ButtonPrimary type="submit" :disabled="form.processing">
