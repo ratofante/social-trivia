@@ -25,6 +25,7 @@ class QuestionController extends Controller
         $orderByScore = $request->query('score') === 'best' ? 'score desc' : 'score asc';
 
         $questions = Question::query()
+            ->with('user', 'category')
             ->orderByRaw($orderByTime)
             ->orderByRaw($orderByScore)
             ->paginate(20);
@@ -36,6 +37,7 @@ class QuestionController extends Controller
 
         return Inertia::render('Dashboard/Questions', [
             'questions' => QuestionResource::collection($questions),
+            //'questions' => $questions,
             'filters' => $filters
         ]);
     }

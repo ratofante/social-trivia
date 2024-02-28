@@ -7,7 +7,7 @@ return $sumerio = [
         "opt_1" => "Los Griegos",
         "opt_2" => "Los Romanos",
         "opt_3" => "Los Mayas",
-        "category_id" => 2,
+        "category_id" => 3,
         "score" => 15
     ],
     [
@@ -16,7 +16,7 @@ return $sumerio = [
         "opt_1" => "La Gran Pirámide de Giza",
         "opt_2" => "El Coloso de Rodas",
         "opt_3" => "Los Jardines Colgantes de Babilonia",
-        "category_id" => 2,
+        "category_id" => 3,
         "score" => 19
     ],
     [
@@ -25,7 +25,7 @@ return $sumerio = [
         "opt_1" => "La Pintura Mural",
         "opt_2" => "La Escultura en Bronce",
         "opt_3" => "El Mosaico",
-        "category_id" => 2,
+        "category_id" => 1,
         "score" => 72
     ]
 ];

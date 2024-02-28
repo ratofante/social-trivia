@@ -14,7 +14,7 @@ class QuestionResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        $resource = [
             'id' => $this->id,
             'question' => $this->question,
             'answer' => $this->answer,
@@ -23,7 +23,20 @@ class QuestionResource extends JsonResource
             'opt_3' => $this->opt_3,
             'user_id' => $this->user_id,
             'score' => $this->score,
-            'category_id' => $this->category_id
+            'category_id' => $this->category_id,
+            'created_at' => $this->created_at
         ];
+
+        // Include user data if loaded
+        if ($this->relationLoaded('user')) {
+            $resource['user'] = new UserResource($this->user);
+        }
+
+        // Include category data if loaded
+        if ($this->relationLoaded('category')) {
+            $resource['category'] = new CategoryResource($this->category);
+        }
+
+        return $resource;
     }
 }
