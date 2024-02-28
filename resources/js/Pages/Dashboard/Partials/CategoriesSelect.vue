@@ -15,6 +15,7 @@ import {
     TrophyIcon,
     GlobeAmericasIcon,
 } from "@heroicons/vue/20/solid";
+import CategoryIcon from "@/Components/CategoryIcon.vue";
 
 const props = defineProps({
     categoryValue: {
@@ -64,21 +65,9 @@ const selected = computed(() => {
             >
                 <span class="flex items-center">
                     <span>
-                        <PaintBrushIcon
-                            v-if="selected.name === 'artes'"
-                            class="w-5 h-5"
-                        />
-                        <TrophyIcon
-                            v-if="selected.name === 'deportes'"
-                            class="w-5 h-5"
-                        />
-                        <GlobeAmericasIcon
-                            v-if="selected.name === 'historia'"
-                            class="w-5 h-5"
-                        />
-                        <BeakerIcon
-                            v-if="selected.name === 'ciencias'"
-                            class="w-5 h-5"
+                        <CategoryIcon
+                            :category="selected.id"
+                            classes="w-5 h5"
                         />
                     </span>
                     <span class="ml-3 block truncate">
@@ -118,21 +107,9 @@ const selected = computed(() => {
                         >
                             <div class="flex items-center">
                                 <span>
-                                    <PaintBrushIcon
-                                        v-if="cat.name === 'artes'"
-                                        class="w-5 h-5"
-                                    />
-                                    <TrophyIcon
-                                        v-if="cat.name === 'deportes'"
-                                        class="w-5 h-5"
-                                    />
-                                    <GlobeAmericasIcon
-                                        v-if="cat.name === 'historia'"
-                                        class="w-5 h-5"
-                                    />
-                                    <BeakerIcon
-                                        v-if="cat.name === 'ciencias'"
-                                        class="w-5 h-5"
+                                    <CategoryIcon
+                                        :category="cat.id"
+                                        classes="w-5 h-5"
                                     />
                                 </span>
                                 <span

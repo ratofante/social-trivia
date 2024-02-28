@@ -6,6 +6,7 @@ import LinkSimple from "@/Components/Link/LinkSimple.vue";
 import { usePage } from "@inertiajs/vue3";
 import FilterForm from "./FilterForm.vue";
 import LinkPrimary from "@/Components/Link/LinkPrimary.vue";
+import { ArrowLeftIcon } from "@heroicons/vue/20/solid";
 
 const page = usePage();
 </script>
@@ -50,10 +51,10 @@ const page = usePage();
             </div>
             <div class="w-fit">
                 <LinkSimple
-                    classs="text-green"
+                    class="flex gap-2 items-center text-gray-light"
                     :href="route('dashboard')"
                     theme="dark"
-                    >Volver</LinkSimple
+                    ><ArrowLeftIcon class="w-4 h-4" />Volver</LinkSimple
                 >
             </div>
         </div>
