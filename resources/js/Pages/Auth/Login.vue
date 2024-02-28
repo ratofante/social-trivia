@@ -28,8 +28,6 @@ const submit = () => {
         onFinish: () => form.reset("password"),
     });
 };
-
-console.log(props.status);
 </script>
 
 <template>

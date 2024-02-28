@@ -7,14 +7,7 @@ import {
     ListboxOption,
     ListboxOptions,
 } from "@headlessui/vue";
-import {
-    CheckIcon,
-    ChevronUpDownIcon,
-    BeakerIcon,
-    PaintBrushIcon,
-    TrophyIcon,
-    GlobeAmericasIcon,
-} from "@heroicons/vue/20/solid";
+import { CheckIcon, ChevronUpDownIcon } from "@heroicons/vue/20/solid";
 import CategoryIcon from "@/Components/CategoryIcon.vue";
 
 const props = defineProps({
@@ -56,8 +49,8 @@ const selected = computed(() => {
         :v-model="categoryValue"
         @update:modelValue="(value) => $emit('update:categoryValue', value)"
     >
-        <ListboxLabel class="block text-sm font-medium leading-6 text-gray-900"
-            >Assigned to</ListboxLabel
+        <ListboxLabel class="block text-sm text-white tracking-wider capitalize"
+            >Categoría</ListboxLabel
         >
         <div class="relative mt-2">
             <ListboxButton

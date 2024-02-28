@@ -37,7 +37,6 @@ class QuestionController extends Controller
 
         return Inertia::render('Dashboard/Questions', [
             'questions' => QuestionResource::collection($questions),
-            //'questions' => $questions,
             'filters' => $filters
         ]);
     }

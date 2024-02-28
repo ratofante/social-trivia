@@ -1,10 +1,8 @@
 <script setup>
 import LinkSimple from "@/Components/Link/LinkSimple.vue";
-import hasRole from "@/Composables/hasRole";
 import { usePage } from "@inertiajs/vue3";
 const page = usePage();
 const roles = page.props.auth.user.roles;
-console.log(page.props.auth.user);
 </script>
 <template>
     <div class="bg-white rounded-md p-4">
@@ -17,7 +15,7 @@ console.log(page.props.auth.user);
                 <li>
                     <LinkSimple
                         :href="
-                            hasRole('admin', roles)
+                            roles[0].name === 'admin'
                                 ? route('admin.questions.index')
                                 : route('player.questions.index')
                         "
@@ -27,7 +25,7 @@ console.log(page.props.auth.user);
                 </li>
                 <li>
                     <LinkSimple
-                        v-if="hasRole('admin', roles)"
+                        v-if="roles[0].name === 'admin'"
                         href="/admin/users"
                     >
                         Jugadores

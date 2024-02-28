@@ -7,7 +7,15 @@ import FormInputError from "../Form/FormInputError.vue";
 import ButtonPrimary from "../Button/ButtonPrimary.vue";
 import CategoriesSelect from "@/Pages/Dashboard/Partials/CategoriesSelect.vue";
 
-const props = defineProps(["question", "action"]);
+const props = defineProps({
+    question: {
+        type: Object,
+    },
+    action: {
+        type: String,
+        required: true,
+    },
+});
 
 const form = useForm({
     question: props.question ? props.question.question : "",
@@ -15,7 +23,7 @@ const form = useForm({
     opt_1: props.question ? props.question.opt_1 : "",
     opt_2: props.question ? props.question.opt_2 : "",
     opt_3: props.question ? props.question.opt_3 : "",
-    category_id: props.question ? props.question.category.id : "",
+    category_id: props.question ? props.question.category.id : 1,
 });
 
 const createQuestion = () => {

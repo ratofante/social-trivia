@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Player;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuestionResource;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -15,16 +16,26 @@ class QuestionController extends Controller
      */
     public function index(Request $request): Response
     {
+        $orderByTime = $request->query('time') === 'recent' ? 'created_at desc' : 'created_at asc';
+        $orderByScore = $request->query('score') === 'best' ? 'score desc' : 'score asc';
+
         $player_questions = Question::query()
             ->whereHas('user', function ($query) use ($request) {
                 $query->where('id', $request->user()->id);
             })
-            ->orderBy('created_at')
+            ->with('user', 'category')
+            ->orderByRaw($orderByTime)
+            ->orderByRaw($orderByScore)
             ->paginate(20);
 
+        $filters = [
+            "time" => $request->query('time') === 'recent' ? true : false,
+            "score" => $request->query('score') === 'best' ? true : false
+        ];
 
         return Inertia::render('Dashboard/Questions', [
-            "questions" => $player_questions
+            "questions" => QuestionResource::collection($player_questions),
+            'filters' => $filters
         ]);
     }
 
