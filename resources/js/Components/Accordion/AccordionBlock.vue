@@ -3,7 +3,7 @@
         class="grid accordion-transition my-4"
         :class="[isOpen ? 'accordion-open' : 'accordion-closed']"
     >
-        <button class="flex justify-between text-sm" @click="isOpen = !isOpen">
+        <button class="flex justify-between text-sm" @click="toggleAccordion">
             <span>
                 <slot name="trigger" />
             </span>
@@ -23,4 +23,10 @@ import { ref } from "vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 
 const isOpen = ref(false);
+const emit = defineEmits(["accordionOpen"]);
+
+function toggleAccordion() {
+    isOpen.value = !isOpen.value;
+    emit("accordionOpen");
+}
 </script>

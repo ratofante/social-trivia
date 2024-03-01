@@ -1,9 +1,9 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import HomeHero from "@/Components/Section/HomeHero.vue";
-import { Head, Link } from "@inertiajs/vue3";
+import { Head } from "@inertiajs/vue3";
 
-defineProps({
+const props = defineProps({
     canLogin: {
         type: Boolean,
     },
@@ -18,15 +18,18 @@ defineProps({
         type: String,
         required: true,
     },
+    question: {
+        type: Object,
+    },
 });
+
+console.log(props.question);
 </script>
 
 <template>
-    <Head title="Welcome" />
+    <Head title="Inicio" />
 
     <GuestLayout :canLogin="canLogin" :canRegister="canRegister">
         <HomeHero />
     </GuestLayout>
 </template>
-
-<style></style>

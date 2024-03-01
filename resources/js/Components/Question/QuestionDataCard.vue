@@ -1,10 +1,20 @@
 <script setup>
-import LinkPrimary from "../Link/LinkPrimary.vue";
+import LinkPrimary from "@/Components/Link/LinkPrimary.vue";
 import { ref } from "vue";
 import { usePage } from "@inertiajs/vue3";
 import CategoryIcon from "../CategoryIcon.vue";
 import QuestionScore from "./QuestionScore.vue";
 import AccordionBlock from "@/Components/Accordion/AccordionBlock.vue";
+import QuestionField from "./QuestionField.vue";
+import {
+    Dialog,
+    DialogPanel,
+    DialogTitle,
+    DialogDescription,
+} from "@headlessui/vue";
+import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
+import ButtonSecondary from "@/Components/Button/ButtonSecondary.vue";
+
 const page = usePage();
 const props = defineProps({
     question: {
@@ -12,7 +22,20 @@ const props = defineProps({
         required: true,
     },
 });
+
+/* Delete button */
 const isOpen = ref(false);
+function setIsOpen(value) {
+    isOpen.value = value;
+}
+function deleteQuestion() {
+    setIsOpen(false);
+}
+
+/*Accordion toggle*/
+const isCardOpen = ref(false);
+
+/*Date format*/
 const createdAt = new Date(props.question.created_at);
 const options = {
     year: "numeric",
@@ -21,6 +44,7 @@ const options = {
     hour: "2-digit",
     minute: "2-digit",
 };
+
 const formattedDate = createdAt.toLocaleString("es-ES", options);
 </script>
 
@@ -29,9 +53,9 @@ const formattedDate = createdAt.toLocaleString("es-ES", options);
         class="text-white border-b border-green border-opacity-25 py-8 first:pt-0"
     >
         <div class="flex justify-between mb-4">
-            <div class="">
-                <span v-if="question.user" class="capitalize">
-                    {{ question.user.name }}
+            <div>
+                <span class="capitalize">
+                    {{ question.user ? question.user.name : "Admin" }}
                 </span>
                 <span
                     class="inline-block ml-2 text-xs text-gray-light opacity-50"
@@ -47,72 +71,46 @@ const formattedDate = createdAt.toLocaleString("es-ES", options);
                 <QuestionScore :score="question.score" />
             </div>
         </div>
-        <div class="flex justify-between">
-            <div class="mb-1">
-                <div
-                    class="font-medium text-sm text-green opacity-75 tracking-wide"
-                >
-                    Pregunta
-                </div>
-                <p
-                    class="text-sm opacity-75 line-clamp-2"
-                    :class="{ 'line-clamp-none': isOpen }"
-                >
-                    {{ question.question }}
-                </p>
-            </div>
-        </div>
-        <div class="flex flex-col mt-4">
-            <div
-                class="font-medium mb-1 text-sm text-green opacity-75 tracking-wide"
-            >
-                Respuesta
-            </div>
-            <p
-                class="text-sm opacity-75 line-clamp-2"
-                :class="{ 'line-clamp-none': isOpen }"
-            >
-                {{ question.answer }}
-            </p>
-        </div>
-        <AccordionBlock>
+        <QuestionField
+            label="Pregunta"
+            :value="question.question"
+            :isCardOpen="isCardOpen"
+            classes="mb-1"
+        />
+        <QuestionField
+            label="Respuesta"
+            :value="question.answer"
+            :isCardOpen="isCardOpen"
+            classes="mt-4"
+        />
+        <AccordionBlock @accordion-open="isCardOpen = !isCardOpen">
             <template v-slot:trigger>
-                <span v-if="!isOpen" class="text-green opacity-80"
-                    >Ver más</span
-                >
-                <span v-else class="text-green opacity-80">Cerrar</span>
+                <div>
+                    <span v-if="!isCardOpen" class="text-green opacity-80"
+                        >Ver más</span
+                    >
+                    <span v-else class="text-green opacity-80">Cerrar</span>
+                </div>
             </template>
             <template v-slot:content>
-                <div class="mb-1 mt-4">
-                    <span
-                        class="font-medium text-sm text-green opacity-75 tracking-wide"
-                    >
-                        Opción A
-                    </span>
-                    <p class="text-sm opacity-75 line-clamp-2">
-                        {{ question.opt_1 }}
-                    </p>
-                </div>
-                <div class="mb-1 mt-4">
-                    <span
-                        class="font-medium text-sm text-green opacity-75 tracking-wide"
-                    >
-                        Opción B
-                    </span>
-                    <p class="text-sm opacity-75 line-clamp-2">
-                        {{ question.opt_2 }}
-                    </p>
-                </div>
-                <div class="mb-1 mt-4">
-                    <span
-                        class="font-medium text-sm text-green opacity-75 tracking-wide"
-                    >
-                        Opción C
-                    </span>
-                    <p class="text-sm opacity-75 line-clamp-2">
-                        {{ question.opt_3 }}
-                    </p>
-                </div>
+                <QuestionField
+                    label="Opción A"
+                    :value="question.opt_1"
+                    :isCardOpen="isCardOpen"
+                    classes="mb-1 mt-4"
+                />
+                <QuestionField
+                    label="Opción B"
+                    :value="question.opt_2"
+                    :isCardOpen="isCardOpen"
+                    classes="mb-1 mt-4"
+                />
+                <QuestionField
+                    label="Opción C"
+                    :value="question.opt_3"
+                    :isCardOpen="isCardOpen"
+                    classes="mb-1 mt-4"
+                />
                 <div v-if="page.props.roles.admin" class="flex gap-4 mt-4">
                     <LinkPrimary
                         title="Editar"
@@ -123,7 +121,59 @@ const formattedDate = createdAt.toLocaleString("es-ES", options);
                         "
                         size="small"
                     />
-                    <LinkPrimary title="Eliminar" href="/" size="small" />
+                    <ButtonPrimary @click="setIsOpen(true)" size="small">
+                        Eliminar
+                    </ButtonPrimary>
+                    <Dialog
+                        :open="isOpen"
+                        @close="setIsOpen(false)"
+                        class="relative z-50"
+                    >
+                        <div
+                            class="fixed inset-0 bg-gray-dark/50"
+                            aria-hidden="true"
+                        />
+                        <div
+                            class="fixed inset-0 flex w-screen items-center justify-center p-4"
+                        >
+                            <DialogPanel
+                                class="w-full max-w-sm p-4 text-gray-light bg-gray-dark border-2 border-green rounded"
+                            >
+                                <DialogTitle class="font-serif mb-2 text-lg"
+                                    >Eliminar pregunta</DialogTitle
+                                >
+                                <DialogDescription
+                                    class="text-sm tracking-wide mb-4"
+                                >
+                                    <span class="text-green/80">
+                                        ¿Estás seguro que quieres eliminar la
+                                        pregunta?
+                                    </span>
+                                    Será borrada permanentemente con su puntaje
+                                    y datos asociados.
+                                </DialogDescription>
+
+                                <LinkPrimaryVue
+                                    title="Eliminar"
+                                    :href="
+                                        route('admin.questions.destroy', {
+                                            question: question.id,
+                                        })
+                                    "
+                                    size="small"
+                                    @click="deleteQuestion"
+                                    >Eliminar</LinkPrimaryVue
+                                >
+                                <ButtonSecondary
+                                    @click="setIsOpen(false)"
+                                    size="small"
+                                    class="mx-2"
+                                >
+                                    Cancelar
+                                </ButtonSecondary>
+                            </DialogPanel>
+                        </div>
+                    </Dialog>
                 </div>
             </template>
         </AccordionBlock>

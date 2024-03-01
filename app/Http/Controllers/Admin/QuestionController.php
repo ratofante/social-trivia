@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Question\UpdateQuestionRequest;
+use App\Http\Requests\Question\StoreQuestionRequest;
 use App\Http\Resources\QuestionResource;
 use App\Models\Question;
+use App\Repositories\QuestionRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -21,7 +23,7 @@ class QuestionController extends Controller
      */
     public function index(Request $request): Response
     {
-        $orderByTime = $request->query('time') === 'recent' ? 'created_at desc' : 'created_at asc';
+        $orderByTime = $request->query('time') === 'oldest' ? 'created_at asc' : 'created_at desc';
         $orderByScore = $request->query('score') === 'best' ? 'score desc' : 'score asc';
 
         $questions = Question::query()
@@ -51,18 +53,24 @@ class QuestionController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * @param \Illuminate\Http\Requests\Question\StoreQuestionRequest
+     * @return Illuminate\Http\RedirectResponse;
      */
-    public function store(Request $request)
+    public function store(StoreQuestionRequest $request, QuestionRepository $repository): RedirectResponse
     {
-        //
+        $repository->create($request);
+        return Redirect::route('admin.questions.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id): Response
     {
-        //
+        $question = Question::where('id', $id)->firstOrFail();
+        return Inertia::render('Welcome', [
+            "question" => $question
+        ]);
     }
 
     /**
@@ -86,8 +94,6 @@ class QuestionController extends Controller
      */
     public function update(UpdateQuestionRequest $request, Question $question): RedirectResponse
     {
-        //dd($request->all());
-
         $question->update($request->all());
         $question->save();
         return Redirect::route('admin.questions.index');
@@ -96,22 +102,11 @@ class QuestionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Question $question, QuestionRepository $repository): RedirectResponse
     {
-        //
-    }
-
-    /**
-     * Returns questions based on the applied filters
-     * @return QuestionCollection
-     */
-    public function filter(Request $request): Response
-    {
-        dd($request->mostRecent);
-        $questions = null;
-
-        Inertia::render('Dashboard/Questions', [
-            'questions' => $questions
+        $repository->forceDelete($question);
+        return Redirect::route('admin.questions.index', [
+            "messages" => "La pregunta" . $question->question . "ha sido eliminada"
         ]);
     }
 }

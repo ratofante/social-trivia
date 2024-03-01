@@ -6,7 +6,9 @@ import QuestionDataCard from "@/Components/Question/QuestionDataCard.vue";
 import { Head } from "@inertiajs/vue3";
 import LinkSimple from "@/Components/Link/LinkSimple.vue";
 import QuestionsNavbar from "./Partials/QuestionsNavbar.vue";
-const props = defineProps(["questions"]);
+const props = defineProps(["questions", "messages"]);
+
+console.log(props.messages);
 </script>
 
 <template>

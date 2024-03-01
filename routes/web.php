@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
             [\App\Http\Controllers\Admin\QuestionController::class, 'index']
         )
             ->name('questions.index');
-        Route::get('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'edit'])
+        Route::get('/questions/edit/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'edit'])
             ->where('question', '[0-9]+')
             ->name('questions.edit');
         Route::patch('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'update'])
@@ -53,6 +53,14 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('questions.update');
         Route::get('/questions/create', [\App\Http\Controllers\Admin\QuestionController::class, 'create'])
             ->name('questions.create');
+        Route::post('/questions', [\App\Http\Controllers\Admin\QuestionController::class, 'store'])
+            ->name('questions.store');
+        Route::get('/questions/show/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'show'])
+            ->where('question', '[0-9]+')
+            ->name('questions.show');
+        Route::delete('/questions/{question}', [\App\Http\Controllers\Admin\QuestionController::class, 'destroy'])
+            ->where('question', '[0-9]+')
+            ->name('questions.destroy');
     });
 
     Route::group([
@@ -67,16 +75,6 @@ Route::group(['middleware' => 'auth'], function () {
             ->name('questions.index');
     });
 });
-
-
-//  Route::middleware(['auth', 'verified'])->group(function() {
-//     Route::get('/questions', [QuestionController::class, 'index'])
-//         ->middleware('role:admin')
-//         ->name('question.index');
-//     Route::get('/questions/create', [QuestionController::class, 'create'])
-//         ->name('question.create');
-//  });
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

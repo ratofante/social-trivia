@@ -39,6 +39,8 @@ const editQuestion = () => {
 const submitForm = () => {
     props.action === "create" ? createQuestion() : editQuestion();
 };
+
+console.log(form.errors);
 </script>
 <template>
     <form @submit.prevent="submitForm">

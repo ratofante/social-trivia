@@ -10,6 +10,10 @@ class Question extends Model
 {
     use HasFactory;
 
+    protected $attributes = [
+        'score' => 50,
+    ];
+
     protected $fillable = [
         'user_id',
         'question',

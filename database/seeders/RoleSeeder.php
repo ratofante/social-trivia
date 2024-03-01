@@ -18,7 +18,6 @@ class RoleSeeder extends Seeder
             ->givePermissionTo([
                 'trivia simple',
                 'trivia social',
-
                 'question create',
                 'question show',
                 'question edit',
@@ -36,7 +35,6 @@ class RoleSeeder extends Seeder
             ->givePermissionTo([
                 'trivia simple',
                 'trivia social',
-                'question create',
                 'question show',
             ]);
 
@@ -44,7 +42,6 @@ class RoleSeeder extends Seeder
             ->givePermissionTo([
                 'trivia simple',
                 'trivia social',
-                'question create',
                 'question show',
             ]);
     }
