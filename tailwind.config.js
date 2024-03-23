@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ["NeueMontreal", ...defaultTheme.fontFamily.sans],
+                sans: ["Inter", ...defaultTheme.fontFamily.sans],
                 serif: ["Britannic-Bold", ...defaultTheme.fontFamily.serif],
             },
             colors: {
@@ -23,6 +23,7 @@ export default {
                     light: "#CFCFCF",
                 },
                 green: "#5CC787",
+                orange: "D96F23",
                 white: {
                     DEFAULT: "#FAFBFF",
                 },

@@ -1,6 +1,8 @@
 <script setup>
 import LinkSimple from "@/Components/Link/LinkSimple.vue";
+
 import { usePage } from "@inertiajs/vue3";
+
 const page = usePage();
 const roles = page.props.auth.user.roles;
 </script>

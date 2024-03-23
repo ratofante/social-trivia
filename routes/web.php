@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TriviaController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -26,15 +28,23 @@ Route::get('/', function () {
     ]);
 });
 
-
-
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+    Route::get('/home', [HomeController::class, 'index'])
+        ->name('home');
+
+    Route::get('/trivia/simple', [TriviaController::class, 'simple'])
+        ->name('trivia.simple');
+    Route::post('/trivia/simple', [TriviaController::class, 'store'])
+        ->name('trivia.simple.store');
+
+    Route::get('/trivia/results', [TriviaController::class, 'results'])
+        ->name('trivia.results');
+
+    Route::get('/trivia/social', [TriviaController::class, 'social'])
+        ->name('trivia.social');
 });
 
 Route::group(['middleware' => 'auth'], function () {
-
     Route::group([
         'prefix' => 'admin',
         'middleware' => 'role:admin',

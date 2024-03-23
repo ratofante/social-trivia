@@ -1,19 +1,20 @@
 <script setup>
 import LinkPrimary from "@/Components/Link/LinkPrimary.vue";
-import { ref } from "vue";
-import { usePage } from "@inertiajs/vue3";
 import CategoryIcon from "../CategoryIcon.vue";
 import QuestionScore from "./QuestionScore.vue";
 import AccordionBlock from "@/Components/Accordion/AccordionBlock.vue";
 import QuestionField from "./QuestionField.vue";
+import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
+import ButtonSecondary from "@/Components/Button/ButtonSecondary.vue";
+
 import {
     Dialog,
     DialogPanel,
     DialogTitle,
     DialogDescription,
 } from "@headlessui/vue";
-import ButtonPrimary from "@/Components/Button/ButtonPrimary.vue";
-import ButtonSecondary from "@/Components/Button/ButtonSecondary.vue";
+import { ref } from "vue";
+import { usePage } from "@inertiajs/vue3";
 
 const page = usePage();
 const props = defineProps({

@@ -1,6 +1,9 @@
 <script setup>
-import { Link } from "@inertiajs/vue3";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+import NavbarBurgerButton from "@/Components/NavbarBurgerButton.vue";
+
+import { Link } from "@inertiajs/vue3";
+import { ref } from "vue";
 
 const props = defineProps({
     canLogin: {
@@ -9,11 +12,9 @@ const props = defineProps({
     canRegister: {
         type: Boolean,
     },
-    showingNavigationDropdown: {
-        type: Boolean,
-        default: false,
-    },
 });
+
+const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
@@ -23,7 +24,9 @@ const props = defineProps({
         >
             <!-- LOGO -->
             <div class="flex justify-center">
-                <div class="w-4 h-4 bg-white rounded-full"></div>
+                <Link href="/"
+                    ><span class="font-serif text-white">Trivium</span></Link
+                >
             </div>
 
             <!-- LOGIN/REGISTER -->
@@ -45,40 +48,12 @@ const props = defineProps({
 
             <!-- BURGER MENU -->
             <div v-if="$page.props.auth.user" class="-me-2 flex items-center">
-                <button
-                    @click="
+                <NavbarBurgerButton
+                    @on-click="
                         showingNavigationDropdown = !showingNavigationDropdown
                     "
-                    class="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out z-50"
-                >
-                    <svg
-                        class="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            :class="{
-                                hidden: showingNavigationDropdown,
-                                'inline-flex': !showingNavigationDropdown,
-                            }"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"
-                        />
-                        <path
-                            :class="{
-                                hidden: !showingNavigationDropdown,
-                                'inline-flex': showingNavigationDropdown,
-                            }"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12"
-                        />
-                    </svg>
-                </button>
+                    :open="showingNavigationDropdown"
+                />
             </div>
         </div>
 
@@ -111,7 +86,7 @@ const props = defineProps({
                 <ResponsiveNavLink :href="route('profile.edit')">
                     Perfil
                 </ResponsiveNavLink>
-                <ResponsiveNavLink :href="route('dashboard')">
+                <ResponsiveNavLink :href="route('home')">
                     Social Trivia
                 </ResponsiveNavLink>
                 <ResponsiveNavLink

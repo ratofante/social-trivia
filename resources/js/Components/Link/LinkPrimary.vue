@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from "vue";
 import { Link } from "@inertiajs/vue3";
 import { reactive } from "vue";
 
@@ -36,7 +35,7 @@ const classObject = reactive({
 <template>
     <Link
         :href="href"
-        class="inline-flex align-middle h-fit font-serif font-medium uppercase text-md tracking-wide border border-transparent rounded-md"
+        class="inline-flex align-middle h-fit font-medium capitalize text-md border border-transparent rounded-sm"
         :class="classObject"
     >
         {{ title }}
